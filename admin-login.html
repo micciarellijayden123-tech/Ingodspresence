@@ -11,6 +11,11 @@
       <div class="feature-card" style="max-width: 520px; margin: 0 auto;">
         <h2>Admin Login</h2>
         <p>Enter your credentials to manage products and view orders.</p>
+        <div style="background:#fff3cd; color:#664d03; border:1px solid #ffeeba; padding:1rem; margin-bottom:1rem; border-radius:8px;">
+          <strong>Important:</strong> This admin page requires the backend server at <code>http://localhost:3000</code>.
+          GitHub Pages only serves the static website and cannot run the backend API.
+          To use the admin UI locally, start the server from <code>server/</code> first.
+        </div>
         <form id="login-form">
           <label>Username<br /><input id="admin-user" required /></label>
           <label>Password<br /><input id="admin-pass" type="password" required /></label>
