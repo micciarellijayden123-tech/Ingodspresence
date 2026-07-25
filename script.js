@@ -7,9 +7,37 @@ if (yearEl) {
 }
 
 if (signupForm && formMessage) {
-  signupForm.addEventListener('submit', (event) => {
+  signupForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-    formMessage.textContent = 'Thank you for joining the movement. We will be in touch soon.';
-    signupForm.reset();
+
+    const submitButton = signupForm.querySelector('button[type="submit"]');
+    const originalLabel = submitButton ? submitButton.textContent : 'Notify Me';
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+    }
+
+    try {
+      const response = await fetch(signupForm.action, {
+        method: signupForm.method,
+        headers: { Accept: 'application/json' },
+        body: new FormData(signupForm),
+      });
+
+      if (response.ok) {
+        formMessage.textContent = 'Thank you for joining the movement. We will be in touch soon.';
+        signupForm.reset();
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (error) {
+      formMessage.textContent = 'There was a problem sending your email. Please try again.';
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = originalLabel;
+      }
+    }
   });
 }
