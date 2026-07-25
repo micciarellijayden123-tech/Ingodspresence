@@ -2,7 +2,7 @@
 
 This project contains:
 
-- Static frontend pages (`index.html`, `store.html`, `admin.html`, etc.)
+- Static frontend pages (`index.html`, `admin.html`, etc.)
 - A Node.js backend in `server/` for admin auth, orders, image uploads, and PayPal verification
 - GitHub Pages deployment support for the frontend
 - Deployment prep for a free backend host

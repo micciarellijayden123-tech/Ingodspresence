@@ -41,7 +41,7 @@ docker run -d -p 3000:3000 \
 - Point the frontend admin API URL to the deployed backend.
 
 ## Update frontend to use a public backend
-Edit `admin.js` and `store.js` if your backend is not on `http://localhost:3000`.
+Edit `admin.js` if your backend is not on `http://localhost:3000`.
 
 Example:
 ```js

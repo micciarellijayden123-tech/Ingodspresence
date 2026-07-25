@@ -34,14 +34,13 @@ Environment variables (required for secure operation):
 - `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `FROM_EMAIL` — to enable sending email receipts via SMTP (optional but recommended).
 - `NOTIFY_EMAIL` — fallback recipient for receipts if payer email not available.
 
-To test PayPal flow locally:
-1. In `../store.html` replace the PayPal SDK URL `client-id` with `sb` (sandbox):
+To test PayPal flow locally, set the PayPal SDK URL `client-id` to `sb` (sandbox) in your frontend page:
 
 ```html
 <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD" defer></script>
 ```
 
-2. Create sandbox REST API credentials in your PayPal developer dashboard and set `PAYPAL_CLIENT_ID` and `PAYPAL_CLIENT_SECRET` in your environment before starting the server. The server will use these credentials to verify that the client-side captured payment was actually completed.
+Then create sandbox REST API credentials in your PayPal developer dashboard and set `PAYPAL_CLIENT_ID` and `PAYPAL_CLIENT_SECRET` in your environment before starting the server. The server will use these credentials to verify that the client-side captured payment was actually completed.
 
 To enable image uploads from the admin UI, POST files to `http://localhost:3000/api/upload-image` using the form field name `image`.
 
