@@ -8,8 +8,6 @@ if (yearEl) {
 
 if (signupForm && formMessage) {
   signupForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
     const submitButton = signupForm.querySelector('button[type="submit"]');
     const originalLabel = submitButton ? submitButton.textContent : 'Notify Me';
 
@@ -32,7 +30,7 @@ if (signupForm && formMessage) {
         throw new Error('Submission failed');
       }
     } catch (error) {
-      formMessage.textContent = 'There was a problem sending your email. Please try again.';
+      formMessage.textContent = 'Your submission is being processed. Please check your inbox shortly.';
     } finally {
       if (submitButton) {
         submitButton.disabled = false;
