@@ -26,13 +26,13 @@ if (signupForm && formMessage) {
       });
 
       if (response.ok) {
-        formMessage.textContent = 'Thank you for joining the movement. We will be in touch soon.';
+        formMessage.textContent = 'Thank you for joining the mission. Check your inbox for resources and next steps.';
         signupForm.reset();
       } else {
         throw new Error('Submission failed');
       }
     } catch (error) {
-      formMessage.textContent = 'Your submission is being processed. Please check your inbox shortly.';
+      formMessage.textContent = 'There was an issue submitting your sign-up. Please try again or email us directly.';
     } finally {
       if (submitButton) {
         submitButton.disabled = false;

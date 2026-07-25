@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Store — Ingodspresence</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Replace the client-id value with your PayPal client ID -->
+    <script src="https://www.paypal.com/sdk/js?client-id=REPLACE_WITH_YOUR_PAYPAL_CLIENT_ID&currency=USD" defer></script>
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav container">
+        <a href="index.html" class="brand"><img src="Logo.jpeg" alt="logo" class="logo" onerror="this.onerror=null;this.src='logo.svg'"/><span>Ingodspresence</span></a>
+        <div class="nav-links">
+          <a href="resources.html">Resources</a>
+          <a href="mission.html">Mission</a>
+          <a href="store.html">Store</a>
+          <a href="index.html#join">Get Involved</a>
+          <a href="admin-login.html">Admin</a>
+        </div>
+      </nav>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Shop</p>
+          <h1>Faith-inspired apparel</h1>
+          <p class="lead">Browse items and checkout securely with PayPal.</p>
+        </div>
+        <div class="hero-card">
+          <div class="badge">Secure</div>
+          <h3>PayPal Checkout</h3>
+          <p>Fast and secure payments powered by PayPal.</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="container section">
+      <div class="section-heading">
+        <p class="eyebrow">Products</p>
+        <h2>Available items</h2>
+      </div>
+
+      <div id="products" class="product-grid"></div>
+
+      <div class="section-heading" style="margin-top:2rem;">
+        <h2>Your Cart</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card" style="min-height:160px;">
+          <div id="cart-items"></div>
+          <p style="margin-top:1rem; font-weight:800; color:var(--primary);">Total: $<span id="cart-total">0.00</span></p>
+          <div id="paypal-button-container" style="margin-top:1rem;"></div>
+        </div>
+        <div class="feature-card">
+          <h3>Order notes</h3>
+          <p>Add shipping address and contact during checkout via PayPal.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Support</h3>
+          <p>Email us at <a href="mailto:orders@ingodspresence.example">orders@ingodspresence.example</a> for manual orders.</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <p>© <span id="year"></span> Ingodspresence</p>
+        <p>Faith-inspired fashion</p>
+      </div>
+    </footer>
+
+    <script src="store.js" defer></script>
+  </body>
+</html>
