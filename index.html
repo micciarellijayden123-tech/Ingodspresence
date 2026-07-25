@@ -148,8 +148,15 @@
           <p class="eyebrow">Stay connected</p>
           <h2>Join the list for first access to new drops.</h2>
         </div>
-        <form class="signup-form" id="signup-form">
+        <form
+          class="signup-form"
+          id="signup-form"
+          action="https://formspree.io/f/xkgneldz"
+          method="POST"
+        >
           <input type="email" id="email-input" name="email" placeholder="Enter your email" required />
+          <input type="hidden" name="_subject" value="New Ingodspresence subscriber" />
+          <input type="hidden" name="_next" value="https://micciarellijayden123-tech.github.io/Ingodspresence/thanks.html" />
           <button type="submit">Notify Me</button>
         </form>
         <p id="form-message" class="form-message" aria-live="polite"></p>
@@ -163,14 +170,6 @@
       </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script>
-      (function () {
-        if (window.emailjs) {
-          window.emailjs.init('wPVEk7kH2yEwvP6B3');
-        }
-      })();
-    </script>
     <script src="script.js"></script>
   </body>
 </html>
