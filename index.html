@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ingodspresence</title>
+    <meta
+      name="description"
+      content="Faith-inspired apparel for everyday worship, bold statements, and kingdom confidence."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav container">
+        <a href="#" class="brand" aria-label="Ingodspresence home">
+          <img
+            src="/home/jayden-micciarelli/Downloads/Logo.jpeg"
+            alt="Ingodspresence logo"
+            class="logo"
+            onerror="this.onerror=null; this.src='logo.svg';"
+          />
+          <span>Ingodspresence</span>
+        </a>
+        <div class="nav-links">
+          <a href="#collection">Collection</a>
+          <a href="#story">Our Story</a>
+          <a href="#join">Join the Movement</a>
+        </div>
+      </nav>
+
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Made to wear your faith boldly</p>
+          <h1>Clothing that carries truth, purpose, and peace.</h1>
+          <p class="lead">
+            Discover uplifting tees, hoodies, and accessories designed to inspire your daily walk and spark conversations rooted in Christ.
+          </p>
+          <div class="hero-actions">
+            <a href="#collection" class="btn btn-primary">Shop the Collection</a>
+            <a href="#story" class="btn btn-secondary">Why We Started</a>
+          </div>
+          <ul class="hero-highlights">
+            <li>Premium comfort</li>
+            <li>Bold, scripture-inspired design</li>
+            <li>Built for everyday worship</li>
+          </ul>
+        </div>
+
+        <div class="hero-card" aria-label="Featured faith-inspired apparel preview">
+          <div class="badge">New drop</div>
+          <h3>Faith Over Fear</h3>
+          <p>Soft cotton essentials with timeless messages that speak life.</p>
+          <div class="mock-shirt">
+            <span>✝</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="story" class="section container">
+        <div class="section-heading">
+          <p class="eyebrow">Our story</p>
+          <h2>More than apparel—an everyday reminder.</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Rooted in Scripture</h3>
+            <p>Every design is crafted to reflect hope, grace, and truth in a modern way.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Made with Purpose</h3>
+            <p>Comfortable, durable pieces made for your daily routine and your spiritual journey.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Built for Community</h3>
+            <p>When you wear Ingodspresence, you join a movement of faith and encouragement.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="collection" class="section section-alt">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Featured collection</p>
+            <h2>Wear what you believe.</h2>
+          </div>
+          <div class="product-grid">
+            <article class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80"
+                alt="Faith-inspired hoodie on a model"
+              />
+              <h3>Grace & Strength</h3>
+              <p>Heavyweight hoodie with a simple statement of resilience.</p>
+              <span>R42</span>
+            </article>
+            <article class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80"
+                alt="Minimal Christian-inspired tee"
+              />
+              <h3>Chosen & Covered</h3>
+              <p>Soft tee that reminds you of your identity in Christ.</p>
+              <span>R28</span>
+            </article>
+            <article class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80"
+                alt="Casual apparel styled for everyday wear"
+              />
+              <h3>Walk in Faith</h3>
+              <p>Minimalist design made for everyday confidence and comfort.</p>
+              <span>R32</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section container">
+        <div class="testimonial-box">
+          <p class="eyebrow">Community love</p>
+          <blockquote>
+            “I wear my Ingodspresence pieces as a reminder that my faith should be visible in every part of life.”
+          </blockquote>
+          <p class="author">— Sarah, Nashville</p>
+        </div>
+      </section>
+    </main>
+
+    <section id="join" class="section cta-section">
+      <div class="container cta-card">
+        <div>
+          <p class="eyebrow">Stay connected</p>
+          <h2>Join the list for first access to new drops.</h2>
+        </div>
+        <form class="signup-form" id="signup-form">
+          <input type="email" placeholder="Enter your email" required />
+          <button type="submit">Notify Me</button>
+        </form>
+        <p id="form-message" class="form-message" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <p>© <span id="year"></span> Ingodspresence. All rights reserved.</p>
+        <p>Faith-inspired fashion for everyday believers.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
