@@ -1,12 +1,12 @@
 services:
   - type: web_service
     name: ingodspresence-backend
-    env: docker
+    env: node
     plan: free
     repo: https://github.com/micciarellijayden123-tech/Ingodspresence
     branch: main
-    rootDirectory: .
-    dockerfilePath: Dockerfile
+    buildCommand: cd server && npm install
+    startCommand: cd server && node server.js
     envVars:
       - key: JWT_SECRET
         value: change_me_secret
