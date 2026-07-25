@@ -1,0 +1,18 @@
+services:
+  - type: web_service
+    name: ingodspresence-backend
+    env: node
+    plan: free
+    repo: https://github.com/micciarellijayden123-tech/Ingodspresence
+    branch: main
+    buildCommand: cd server && npm install
+    startCommand: cd server && node server.js
+    envVars:
+      - key: JWT_SECRET
+        value: change_me_secret
+      - key: ADMIN_USER
+        value: Jayden Micciarelli
+      - key: ADMIN_PASS
+        value: 123456
+      - key: PAYPAL_ENV
+        value: sandbox
