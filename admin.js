@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:3000';
+const API_BASE = window.APP_CONFIG?.API_BASE || 'http://localhost:3000';
 const TOKEN_KEY = 'adminToken';
 window.products = [];
 

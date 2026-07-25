@@ -32,33 +32,38 @@ const DB_FILE = path.join(__dirname, 'db.sqlite');
 const db = new sqlite3.Database(DB_FILE);
 
 function initDb() {
-  db.serialize(() => {
-    db.run(`CREATE TABLE IF NOT EXISTS products (
-      id TEXT PRIMARY KEY,
-      name TEXT NOT NULL,
-      price REAL NOT NULL,
-      desc TEXT,
-      img TEXT,
-      sizes TEXT,
-      inventory TEXT
-    )`);
+  return new Promise((resolve, reject) => {
+    db.serialize(() => {
+      db.run(`CREATE TABLE IF NOT EXISTS products (
+        id TEXT PRIMARY KEY,
+        name TEXT NOT NULL,
+        price REAL NOT NULL,
+        desc TEXT,
+        img TEXT,
+        sizes TEXT,
+        inventory TEXT
+      )`);
 
-    db.run(`CREATE TABLE IF NOT EXISTS orders (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      paypal_id TEXT,
-      status TEXT,
-      total REAL,
-      items TEXT,
-      payer_email TEXT,
-      raw TEXT,
-      created_at TEXT
-    )`);
+      db.run(`CREATE TABLE IF NOT EXISTS orders (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        paypal_id TEXT,
+        status TEXT,
+        total REAL,
+        items TEXT,
+        payer_email TEXT,
+        raw TEXT,
+        created_at TEXT
+      )`);
 
-    db.run(`CREATE TABLE IF NOT EXISTS admin_users (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      username TEXT UNIQUE NOT NULL,
-      password_hash TEXT NOT NULL
-    )`);
+      db.run(`CREATE TABLE IF NOT EXISTS admin_users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT UNIQUE NOT NULL,
+        password_hash TEXT NOT NULL
+      )`, (err) => {
+        if (err) return reject(err);
+        resolve();
+      });
+    });
   });
 }
 
@@ -329,10 +334,13 @@ app.get('/api/admin/me', requireAuth, (req, res) => {
   res.json({ username: req.admin.username });
 });
 
-app.listen(PORT, () => {
-  initDb();
-  createAdminUser('Jayden Micciarelli', '123456')
-    .then(() => console.log('Admin user ensured: Jayden Micciarelli'))
-    .catch((err) => console.error('Failed to ensure admin user', err));
+app.listen(PORT, async () => {
+  try {
+    await initDb();
+    await createAdminUser('Jayden Micciarelli', '123456');
+    console.log('Admin user ensured: Jayden Micciarelli');
+  } catch (err) {
+    console.error('Failed to initialize database or admin user', err);
+  }
   console.log(`Orders server running on http://localhost:${PORT}`);
 });

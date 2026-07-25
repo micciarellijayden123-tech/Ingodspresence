@@ -1,3 +1,5 @@
+const API_BASE = window.APP_CONFIG?.API_BASE || 'http://localhost:3000';
+
 const DEFAULT_PRODUCTS = [
   {
     id: 'p1',
@@ -45,7 +47,7 @@ function normalizeProduct(product) {
 
 async function loadProducts() {
   try {
-    const response = await fetch('/api/products');
+    const response = await fetch(`${API_BASE}/api/products`);
     if (!response.ok) {
       throw new Error('Product API unavailable');
     }
@@ -210,7 +212,7 @@ function renderPayPalButton() {
             total,
             createdAt: new Date().toISOString(),
           };
-          fetch('/api/orders', {
+          fetch(`${API_BASE}/api/orders`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(orderPayload),
