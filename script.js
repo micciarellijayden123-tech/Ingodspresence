@@ -1,6 +1,7 @@
 const yearEl = document.getElementById('year');
 const signupForm = document.getElementById('signup-form');
 const formMessage = document.getElementById('form-message');
+const emailInput = document.getElementById('email-input');
 
 if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
@@ -8,6 +9,8 @@ if (yearEl) {
 
 if (signupForm && formMessage) {
   signupForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
     const submitButton = signupForm.querySelector('button[type="submit"]');
     const originalLabel = submitButton ? submitButton.textContent : 'Notify Me';
 
@@ -17,13 +20,19 @@ if (signupForm && formMessage) {
     }
 
     try {
-      const response = await fetch(signupForm.action, {
-        method: signupForm.method,
-        headers: { Accept: 'application/json' },
-        body: new FormData(signupForm),
-      });
+      if (!window.emailjs) {
+        throw new Error('EmailJS is not loaded');
+      }
 
-      if (response.ok) {
+      const result = await window.emailjs.send(
+        'service_jj8s2v7',
+        'template_n7wqj2e',
+        {
+          email: emailInput ? emailInput.value : '',
+        }
+      );
+
+      if (result?.status === 200) {
         formMessage.textContent = 'Thank you for joining the movement. We will be in touch soon.';
         signupForm.reset();
       } else {
