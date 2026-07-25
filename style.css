@@ -326,6 +326,10 @@ blockquote {
   .hero-card {
     max-width: 480px;
   }
+
+  .section {
+    padding: 3.5rem 0;
+  }
 }
 
 @media (max-width: 600px) {
@@ -337,6 +341,15 @@ blockquote {
   .nav-links {
     flex-wrap: wrap;
     justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .hero {
+    padding-bottom: 2.5rem;
+  }
+
+  .hero-grid {
+    padding: 1.5rem 0 0;
   }
 
   .hero-actions,
@@ -348,5 +361,14 @@ blockquote {
   .signup-form button,
   .signup-form input {
     width: 100%;
+  }
+
+  .cta-card,
+  .testimonial-box {
+    padding: 1.25rem;
+  }
+
+  .product-card img {
+    height: 160px;
   }
 }
