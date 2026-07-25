@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin — Manage Products</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      if (!localStorage.getItem('adminToken')) {
+        window.location.href = 'admin-login.html';
+      }
+    </script>
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav container">
+        <a href="index.html" class="brand"><img src="Logo.jpeg" alt="logo" class="logo" onerror="this.onerror=null;this.src='logo.svg'"/><span>Ingodspresence</span></a>
+        <div class="nav-links">
+          <a href="resources.html">Resources</a>
+          <a href="mission.html">Mission</a>
+          <a href="store.html">Store</a>
+          <a href="index.html#join">Get Involved</a>
+        </div>
+      </nav>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Admin</p>
+          <h1>Product management</h1>
+          <p class="lead">Add, edit, and remove products through the secure backend.</p>
+        </div>
+        <div class="hero-card">
+          <div class="badge">Secure Admin</div>
+          <h3>Backend-powered editor</h3>
+          <p>Manage products and view orders through the authenticated API.</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="container section">
+      <div class="section-heading">
+        <h2>Products</h2>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Add / Edit product</h3>
+          <form id="product-form">
+            <input type="hidden" id="prod-id" />
+            <label>Name<br /><input id="prod-name" required /></label>
+            <label>Price (USD)<br /><input id="prod-price" type="number" step="0.01" required /></label>
+            <label>Description<br /><textarea id="prod-desc"></textarea></label>
+            <label>Image URL<br /><input id="prod-img" /></label>
+            <label>Sizes (comma separated)<br /><input id="prod-sizes" placeholder="S,M,L" /></label>
+            <label>Inventory JSON<br /><textarea id="prod-inventory" placeholder='{"S":10,"M":8,"L":5}'></textarea></label>
+            <div style="margin-top:0.5rem; display:flex; gap:0.5rem; align-items:center;">
+              <input type="file" id="image-file" accept="image/*" />
+              <button type="button" id="upload-image" class="btn btn-primary">Upload Image</button>
+            </div>
+            <div style="margin-top:0.6rem; display:flex; gap:0.6rem; flex-wrap:wrap;">
+              <button type="submit" class="btn btn-primary">Save Product</button>
+              <button type="button" id="prod-clear" class="btn btn-secondary">Clear</button>
+              <button type="button" id="logout-button" class="btn btn-secondary">Logout</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="feature-card">
+          <h3>Existing products</h3>
+          <div id="admin-list"></div>
+        </div>
+
+        <div class="feature-card">
+          <h3>Export / Import</h3>
+          <p>Export JSON to backup or copy. Import replaces current product list.</p>
+          <button id="export-json" class="btn btn-primary">Export JSON</button>
+          <button id="import-btn" class="btn btn-secondary">Import JSON</button>
+          <button id="download-json" class="btn btn-secondary">Download JSON</button>
+          <div style="margin-top:0.8rem;"><textarea id="import-json" rows="6" style="width:100%" placeholder='Paste JSON here to import'></textarea></div>
+        </div>
+
+        <div class="feature-card">
+          <h3>Recent orders</h3>
+          <div id="order-list"></div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <p>© <span id="year"></span> Ingodspresence</p>
+        <p>Admin (local)</p>
+      </div>
+    </footer>
+
+    <script src="admin.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Login — Ingodspresence</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="container section" style="padding-top:4rem;">
+      <div class="feature-card" style="max-width: 520px; margin: 0 auto;">
+        <h2>Admin Login</h2>
+        <p>Enter your credentials to manage products and view orders.</p>
+        <form id="login-form">
+          <label>Username<br /><input id="admin-user" required /></label>
+          <label>Password<br /><input id="admin-pass" type="password" required /></label>
+          <button type="submit" class="btn btn-primary" style="width:100%; margin-top:1rem;">Sign In</button>
+        </form>
+        <p id="login-error" style="color:#b00020; margin-top:1rem;"></p>
+      </div>
+    </main>
+    <script>
+      const API_BASE = 'http://localhost:3000';
+      document.getElementById('login-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const username = document.getElementById('admin-user').value.trim();
+        const password = document.getElementById('admin-pass').value;
+        const errorEl = document.getElementById('login-error');
+        errorEl.textContent = '';
+        try {
+          const response = await fetch(`${API_BASE}/api/admin/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password }),
+          });
+          if (!response.ok) {
+            const data = await response.json();
+            errorEl.textContent = data.error || 'Login failed';
+            return;
+          }
+          const data = await response.json();
+          localStorage.setItem('adminToken', data.token);
+          window.location.href = 'admin.html';
+        } catch (err) {
+          errorEl.textContent = 'Login failed. Check server and credentials.';
+        }
+      });
+    </script>
+  </body>
+</html>
