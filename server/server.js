@@ -13,13 +13,7 @@ const bcrypt = require('bcrypt');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const JWT_SECRET = process.env.JWT_SECRET || 'change_this_secret_in_production';
-const API_ORIGIN = [
-  'http://localhost:8000',
-  'http://127.0.0.1:8000',
-  'http://localhost:5500',
-  'http://127.0.0.1:5500',
-  'null',
-];
+const API_ORIGIN = process.env.API_ORIGIN ? process.env.API_ORIGIN.split(',') : true;
 
 app.use(cors({ origin: API_ORIGIN }));
 app.use(bodyParser.json({ limit: '200kb' }));
@@ -52,6 +46,12 @@ function initDb() {
         items TEXT,
         payer_email TEXT,
         raw TEXT,
+        created_at TEXT
+      )`);
+
+      db.run(`CREATE TABLE IF NOT EXISTS signups (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        email TEXT NOT NULL,
         created_at TEXT
       )`);
 
@@ -303,6 +303,36 @@ app.post('/api/orders', async (req, res) => {
   );
 });
 
+app.post('/api/signup', async (req, res) => {
+  const { email } = req.body || {};
+  if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+    return res.status(400).json({ error: 'A valid email address is required.' });
+  }
+
+  const normalizedEmail = email.toLowerCase();
+  const createdAt = new Date().toISOString();
+  db.run(
+    'INSERT INTO signups (email, created_at) VALUES (?, ?)',
+    [normalizedEmail, createdAt],
+    function (err) {
+      if (err) {
+        console.error('Failed to save signup', err);
+        return res.status(500).json({ error: 'Could not save signup' });
+      }
+      sendSignupEmail(normalizedEmail, createdAt).catch((sendErr) => console.warn('Signup notification failed', sendErr));
+      sendSignupConfirmationEmail(normalizedEmail).catch((sendErr) => console.warn('Signup confirmation failed', sendErr));
+      res.json({ ok: true });
+    }
+  );
+});
+
+app.get('/api/admin/signups', requireAuth, (req, res) => {
+  db.all('SELECT id, email, created_at FROM signups ORDER BY id DESC', [], (err, rows) => {
+    if (err) return res.status(500).json({ error: 'Database error' });
+    res.json(rows);
+  });
+});
+
 function cartTotalFromItems(items) {
   return (items || []).reduce((sum, item) => sum + (item.price || 0) * (item.qty || 0), 0);
 }
@@ -325,6 +355,35 @@ async function sendReceiptEmail(order, paypalId, total) {
     from: process.env.FROM_EMAIL || process.env.SMTP_USER,
     to: payerEmail,
     subject: `Your Ingodspresence order (${paypalId})`,
+    text,
+    html,
+  });
+}
+
+async function sendSignupEmail(email, createdAt) {
+  if (!mailer) return;
+  const notifyEmail = process.env.NOTIFY_EMAIL || process.env.SMTP_USER;
+  if (!notifyEmail) return;
+  const html = `<p>A new signup has been received for Ingodspresence.</p><ul><li><strong>Email:</strong> ${escapeHtml(email)}</li><li><strong>Signed up at:</strong> ${escapeHtml(createdAt)}</li></ul>`;
+  const text = `New signup received for Ingodspresence.\n\nEmail: ${email}\nSigned up at: ${createdAt}\n`;
+  await mailer.sendMail({
+    from: process.env.FROM_EMAIL || process.env.SMTP_USER,
+    to: notifyEmail,
+    subject: `New signup: ${email}`,
+    text,
+    html,
+  });
+}
+
+async function sendSignupConfirmationEmail(email) {
+  if (!mailer) return;
+  const fromEmail = process.env.FROM_EMAIL || process.env.SMTP_USER;
+  const html = `<p>Thank you for joining the mission at Ingodspresence.</p><p>We will send you resources and encouragement to help you obey Matthew 28:19.</p><p>Stay tuned for the next update.</p>`;
+  const text = `Thank you for joining the mission at Ingodspresence.\n\nWe will send you resources and encouragement to help you obey Matthew 28:19.\n\nStay tuned for the next update.`;
+  await mailer.sendMail({
+    from: fromEmail,
+    to: email,
+    subject: 'Welcome to Ingodspresence',
     text,
     html,
   });

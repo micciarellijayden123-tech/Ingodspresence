@@ -19,10 +19,16 @@ if (signupForm && formMessage) {
     }
 
     try {
-      const response = await fetch(signupForm.action, {
-        method: signupForm.method,
-        headers: { Accept: 'application/json' },
-        body: new FormData(signupForm),
+      const endpoint = window.APP_CONFIG && window.APP_CONFIG.API_BASE
+        ? `${window.APP_CONFIG.API_BASE.replace(/\/$/, '')}/api/signup`
+        : signupForm.action;
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: signupForm.email.value }),
       });
 
       if (response.ok) {

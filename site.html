@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ingodspresence — The Great Commission</title>
+    <meta
+      name="description"
+      content="A ministry platform for obeying Matthew 28:19: disciple, baptize, and teach all nations with practical resources and encouragement."
+    />
+    <meta name="keywords" content="Christian ministry, discipleship, Matthew 28:19, Great Commission, faith resources" />
+    <meta property="og:title" content="Ingodspresence — The Great Commission" />
+    <meta property="og:description" content="A ministry platform equipping believers to live out Matthew 28:19 through discipleship, baptism, and teaching." />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav container">
+        <a href="#" class="brand" aria-label="Ingodspresence home">
+          <img
+            src="Logo.jpeg"
+            alt="Ingodspresence logo"
+            class="logo"
+            onerror="this.onerror=null; this.src='logo.svg';"
+          />
+          <span>Ingodspresence</span>
+        </a>
+        <div class="nav-links">
+          <a href="resources.html">Resources</a>
+          <a href="mission.html">Mission</a>
+          <a href="site.html#join">Get Involved</a>
+          <a href="admin-login.html">Admin</a>
+        </div>
+      </nav>
+
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">The Great Commission</p>
+          <h1>Matthew 28:19 — Go and make disciples of all nations.</h1>
+          <p class="lead">
+            We exist to encourage believers to live and share the Gospel: baptize, teach, and walk in God's presence. Find resources, training, and ways to get involved.
+          </p>
+          <div class="hero-actions">
+            <a href="#mission" class="btn btn-primary">Learn the Mission</a>
+            <a href="#resources" class="btn btn-secondary">Explore Resources</a>
+          </div>
+          <ul class="hero-highlights">
+            <li>Make disciples</li>
+            <li>Baptize and teach</li>
+            <li>Go to all nations</li>
+          </ul>
+        </div>
+
+        <div class="hero-card" aria-label="Matthew 28:19 verse card">
+          <div class="badge">Scripture</div>
+          <h3>Matthew 28:19 (KJV)</h3>
+          <p>"Go ye therefore, and teach all nations, baptizing them in the name of the Father, and of the Son, and of the Holy Ghost:"</p>
+          <div class="mock-shirt" style="min-height:140px;font-size:1.6rem;padding:1rem;">
+            <span>Disciple • Baptize • Teach</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="mission" class="section container">
+        <div class="section-heading">
+          <p class="eyebrow">Our mission</p>
+          <h2>Living out the Great Commission every day.</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Make Disciples</h3>
+            <p>Equip believers to share the gospel and help others grow in faith.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Baptize</h3>
+            <p>Celebrate new life in Christ through baptism and community support.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Teach</h3>
+            <p>Provide accessible resources and training to disciple individuals and groups.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="resources" class="section section-alt">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Resources</p>
+            <h2>Tools to help you obey and teach Matthew 28:19</h2>
+          </div>
+          <div class="product-grid">
+            <article class="product-card">
+              <h3>How to Share the Gospel</h3>
+              <p>Simple, conversation-ready guides you can use anywhere.</p>
+            </article>
+            <article class="product-card">
+              <h3>Baptism Guide</h3>
+              <p>Practical next steps for new believers and local churches.</p>
+            </article>
+            <article class="product-card">
+              <h3>Training Materials</h3>
+              <p>Bible studies and leader notes to teach and disciple groups.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section container">
+        <div class="testimonial-box">
+          <p class="eyebrow">The Great Commission</p>
+          <blockquote>
+            “Matthew 28:19 calls us to make disciples of all nations. This ministry helps believers live that command with intentionality and faithfulness every day.”
+          </blockquote>
+          <p class="verse-ref">Matthew 28:19 (KJV)</p>
+          <p class="author">— Jayden Micciarelli</p>
+        </div>
+      </section>
+    </main>
+
+    <section id="join" class="section cta-section">
+      <div class="container cta-card">
+        <div>
+          <p class="eyebrow">Join the mission</p>
+          <h2>Sign up to receive resources and local training.</h2>
+        </div>
+        <form class="signup-form" id="signup-form" action="#" method="POST">
+          <input type="email" id="email-input" name="email" placeholder="Enter your email" required />
+          <button type="submit">Join the Mission</button>
+        </form>
+        <p id="form-message" class="form-message" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <p>© <span id="year"></span> Ingodspresence. All rights reserved.</p>
+        <p>Equipping believers to obey Matthew 28:19 through discipleship, baptism, and teaching.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -119,6 +119,40 @@ function renderOrderList(orders) {
   });
 }
 
+function renderSignupList(signups) {
+  const el = document.getElementById('signup-list');
+  el.innerHTML = '';
+  if (!signups || signups.length === 0) {
+    el.textContent = 'No signups yet.';
+    return;
+  }
+
+  const table = document.createElement('table');
+  table.style.width = '100%';
+  table.style.borderCollapse = 'collapse';
+  table.innerHTML = `
+    <thead>
+      <tr>
+        <th style="text-align:left; padding:0.5rem; border-bottom:1px solid var(--border);">Email</th>
+        <th style="text-align:left; padding:0.5rem; border-bottom:1px solid var(--border);">Signed up</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  `;
+  const tbody = table.querySelector('tbody');
+
+  signups.forEach((signup) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td style="padding:0.5rem; border-bottom:1px solid var(--border);">${signup.email}</td>
+      <td style="padding:0.5rem; border-bottom:1px solid var(--border);">${new Date(signup.created_at).toLocaleString()}</td>
+    `;
+    tbody.appendChild(row);
+  });
+
+  el.appendChild(table);
+}
+
 function clearForm() {
   document.getElementById('prod-id').value = '';
   document.getElementById('prod-name').value = '';
@@ -154,6 +188,18 @@ async function loadOrders() {
   }
 }
 
+async function loadSignups() {
+  if (!requireAuth()) return;
+  try {
+    const signups = await apiJson('/api/admin/signups');
+    renderSignupList(signups || []);
+  } catch (err) {
+    console.error('Failed to load signups:', err);
+    const el = document.getElementById('signup-list');
+    el.textContent = 'Unable to load signups from the server.';
+  }
+}
+
 async function saveProduct(product, isUpdate) {
   const path = isUpdate ? `/api/admin/products/${product.id}` : '/api/admin/products';
   const method = isUpdate ? 'PUT' : 'POST';
@@ -182,6 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!requireAuth()) return;
   loadProducts();
   loadOrders();
+  loadSignups();
 
   const form = document.getElementById('product-form');
   form.addEventListener('submit', async (e) => {
