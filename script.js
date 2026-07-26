@@ -11,7 +11,7 @@ if (signupForm && formMessage) {
     event.preventDefault();
 
     const submitButton = signupForm.querySelector('button[type="submit"]');
-    const originalLabel = submitButton ? submitButton.textContent : 'Notify Me';
+    const originalLabel = submitButton ? submitButton.textContent : 'Join the Mission';
 
     if (submitButton) {
       submitButton.disabled = true;
@@ -19,16 +19,18 @@ if (signupForm && formMessage) {
     }
 
     try {
-      const endpoint = window.APP_CONFIG && window.APP_CONFIG.API_BASE
-        ? `${window.APP_CONFIG.API_BASE.replace(/\/$/, '')}/api/signup`
-        : signupForm.action;
-      const response = await fetch(endpoint, {
+      const response = await fetch(signupForm.action, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email: signupForm.email.value }),
+        body: JSON.stringify({
+          firstName: signupForm.firstName.value,
+          lastName: signupForm.lastName.value,
+          email: signupForm.email.value,
+          prayerRequest: signupForm.prayerRequest.value,
+        }),
       });
 
       if (response.ok) {
