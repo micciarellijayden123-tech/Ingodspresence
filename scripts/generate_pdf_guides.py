@@ -1,6 +1,8 @@
 from fpdf import FPDF
 import os
 
+LOGO_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'Logo.jpeg')
+
 GUIDES = [
     {
         'txt': 'downloads/gospel_conversation_guide.txt',
@@ -23,10 +25,16 @@ GUIDES = [
 ]
 
 class GuidePDF(FPDF):
+    def add_logo(self, x=10, y=8, w=12, h=12):
+        if os.path.exists(LOGO_PATH):
+            self.image(LOGO_PATH, x, y, w, h)
+
     def header(self):
         if self.page_no() > 1:
+            self.add_logo(10, 8, 12, 12)
             self.set_font('Arial', 'B', 10)
             self.set_text_color(60, 60, 60)
+            self.set_xy(25, 10)
             self.cell(0, 8, self.title, 0, 1, 'C')
             self.ln(2)
 
@@ -41,18 +49,19 @@ class GuidePDF(FPDF):
         self.add_page()
         self.set_fill_color(242, 242, 242)
         self.rect(10, 10, 190, 277, 'F')
-        self.set_xy(15, 45)
+        self.add_logo(80, 18, 30, 30)
+        self.set_xy(15, 60)
         self.set_text_color(0, 30, 60)
         self.set_font('Arial', 'B', 28)
-        self.multi_cell(0, 14, title)
+        self.multi_cell(self.w - self.l_margin - self.get_x(), 14, title)
         self.ln(8)
         self.set_font('Arial', '', 14)
         self.set_text_color(50, 50, 50)
-        self.multi_cell(0, 9, subtitle)
+        self.multi_cell(self.w - self.l_margin - self.get_x(), 9, subtitle)
         self.ln(20)
         self.set_font('Arial', 'I', 11)
         self.set_text_color(100, 100, 100)
-        self.multi_cell(0, 8, 'Engage with confidence, clarity, and Scripture-centered guidance.')
+        self.multi_cell(self.w - self.l_margin - self.get_x(), 8, 'Engage with confidence, clarity, and Scripture-centered guidance.')
         self.ln(80)
         self.set_font('Arial', '', 10)
         self.set_text_color(150, 150, 150)
@@ -61,7 +70,7 @@ class GuidePDF(FPDF):
     def add_section_heading(self, text):
         self.set_font('Arial', 'B', 14)
         self.set_text_color(15, 45, 80)
-        self.multi_cell(0, 8, text)
+        self.multi_cell(self.w - 20, 8, text)
         self.ln(2)
         self.set_draw_color(175, 175, 175)
         self.set_line_width(0.5)
@@ -71,7 +80,7 @@ class GuidePDF(FPDF):
     def add_paragraph(self, text):
         self.set_font('Arial', '', 12)
         self.set_text_color(25, 25, 25)
-        self.multi_cell(0, 7.5, text)
+        self.multi_cell(self.w - 20, 7.5, text)
         self.ln(2)
 
     def add_bullet(self, text):
@@ -79,7 +88,7 @@ class GuidePDF(FPDF):
         self.set_text_color(25, 25, 25)
         self.cell(5)
         self.cell(3, 7, '-', 0, 0)
-        self.multi_cell(0, 7, ' ' + text)
+        self.multi_cell(self.w - 25, 7, ' ' + text)
 
 
 def clean_text(text):
