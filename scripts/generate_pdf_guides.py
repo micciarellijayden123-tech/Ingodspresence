@@ -25,8 +25,13 @@ GUIDES = [
 ]
 
 class GuidePDF(FPDF):
-    def add_logo(self, x=10, y=8, w=12, h=12):
+    def add_logo(self, x=10, y=8, w=12, h=12, card=False):
         if os.path.exists(LOGO_PATH):
+            if card:
+                self.set_fill_color(255, 255, 255)
+                self.set_draw_color(220, 220, 220)
+                self.set_line_width(0.3)
+                self.rect(x - 4, y - 4, w + 8, h + 8, 'FD')
             self.image(LOGO_PATH, x, y, w, h)
 
     def header(self):
@@ -47,22 +52,43 @@ class GuidePDF(FPDF):
 
     def add_title_page(self, title, subtitle):
         self.add_page()
-        self.set_fill_color(242, 242, 242)
+        self.set_fill_color(246, 248, 251)
         self.rect(10, 10, 190, 277, 'F')
-        self.add_logo(80, 18, 30, 30)
-        self.set_xy(15, 60)
+
+        self.set_fill_color(255, 255, 255)
+        self.rect(28, 20, 154, 44, 'F')
+        self.set_draw_color(225, 231, 240)
+        self.set_line_width(0.3)
+        self.rect(28, 20, 154, 44)
+
+        self.add_logo(42, 24, 28, 28, card=False)
+        self.set_text_color(12, 46, 84)
+        self.set_font('Arial', 'B', 16)
+        self.set_xy(78, 27)
+        self.cell(0, 8, 'Ingodspresence', 0, 1, 'L')
+        self.set_font('Arial', '', 10)
+        self.set_text_color(95, 108, 125)
+        self.set_xy(78, 37)
+        self.cell(0, 6, 'Discipleship Resources', 0, 1, 'L')
+
+        self.set_xy(15, 82)
         self.set_text_color(0, 30, 60)
-        self.set_font('Arial', 'B', 28)
-        self.multi_cell(self.w - self.l_margin - self.get_x(), 14, title)
-        self.ln(8)
-        self.set_font('Arial', '', 14)
-        self.set_text_color(50, 50, 50)
-        self.multi_cell(self.w - self.l_margin - self.get_x(), 9, subtitle)
-        self.ln(20)
+        self.set_font('Arial', 'B', 24)
+        self.multi_cell(self.w - 30, 12, title)
+        self.ln(4)
+        self.set_font('Arial', '', 13)
+        self.set_text_color(70, 80, 95)
+        self.multi_cell(self.w - 30, 8, subtitle)
+        self.ln(12)
+        self.set_fill_color(19, 109, 164)
+        self.set_text_color(255, 255, 255)
+        self.set_font('Arial', 'B', 11)
+        self.cell(34, 8, 'PDF GUIDE', 0, 0, 'C', True)
+        self.ln(24)
         self.set_font('Arial', 'I', 11)
         self.set_text_color(100, 100, 100)
-        self.multi_cell(self.w - self.l_margin - self.get_x(), 8, 'Engage with confidence, clarity, and Scripture-centered guidance.')
-        self.ln(80)
+        self.multi_cell(self.w - 30, 8, 'Engage with confidence, clarity, and Scripture-centered guidance.')
+        self.ln(36)
         self.set_font('Arial', '', 10)
         self.set_text_color(150, 150, 150)
         self.cell(0, 6, 'Designed for Ingodspresence ministry leaders and volunteers.', 0, 1, 'C')
