@@ -9,18 +9,18 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
       pages: write
       id-token: write
     steps:
       - uses: actions/checkout@v4
       - name: Deploy to GitHub Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: |
             .
             !server/**
       - name: Deploy
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4

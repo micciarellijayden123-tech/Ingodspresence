@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Merch — Ingodspresence</title>
+    <meta
+      name="description"
+      content="View the Ingodspresence merch collection and see the apparel that reflects the Great Commission."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav container">
+        <a href="site.html" class="brand" aria-label="Ingodspresence home">
+          <img
+            src="Logo.jpeg"
+            alt="Ingodspresence logo"
+            class="logo"
+            onerror="this.onerror=null; this.src='logo.svg';"
+          />
+          <span>Ingodspresence</span>
+        </a>
+        <div class="nav-links">
+          <a href="resources.html">Resources</a>
+          <a href="mission.html">Mission</a>
+          <a href="merch.html">Merch</a>
+          <a href="site.html#join">Get Involved</a>
+          <a href="admin-login.html">Admin</a>
+        </div>
+      </nav>
+
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Merch</p>
+          <h1>Wear the mission.</h1>
+          <p class="lead">
+            Our apparel is designed to reflect the heart of the Great Commission — discipleship, baptism, and a visible commitment to sharing the Gospel.
+          </p>
+          <div class="hero-actions">
+            <a href="#gallery" class="btn btn-primary">See the Collection</a>
+            <a href="site.html#join" class="btn btn-secondary">Get Involved</a>
+          </div>
+        </div>
+
+        <div class="hero-card" aria-label="Merch collection overview">
+          <div class="badge">Featured</div>
+          <h3>Godchose Me</h3>
+          <p>Bold faith-based apparel made to spark conversation and reflect the mission of Christ.</p>
+          <div class="mock-shirt" style="min-height:160px; font-size:1.5rem; padding:1rem;">
+            <span>Disciple • Baptize • Teach</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container section" id="gallery">
+      <div class="section-heading">
+        <p class="eyebrow">Collection</p>
+        <h2>Merch that reflects the mission.</h2>
+      </div>
+
+      <div class="merch-product-grid">
+        <article class="merch-product-card">
+          <img src="merch/merch-1.png" alt="Cream GOD CHOSE ME T-shirt" />
+          <div class="merch-product-copy">
+            <h3>GOD CHOSE ME Tshirt</h3>
+            <p class="price">R300</p>
+            <p>Premium cotton tee with bold faith-inspired design.</p>
+          </div>
+        </article>
+
+        <article class="merch-product-card">
+          <img src="merch/merch-5.png" alt="Man and woman wearing In Gods Presence T-shirts" />
+          <div class="merch-product-copy">
+            <h3>In Gods Presence Tshirt</h3>
+            <p class="price">R250</p>
+            <p>Minimal, clean statement tee for everyday wear.</p>
+          </div>
+        </article>
+      </div>
+
+      <section class="merch-contact" aria-labelledby="merch-contact-heading">
+        <p class="eyebrow">Questions or orders</p>
+        <h2 id="merch-contact-heading">Message us about merch</h2>
+        <p>Contact either of our merch team members on WhatsApp.</p>
+        <div class="merch-contact-links">
+          <a class="btn btn-primary" href="https://wa.me/27731965775?text=Hi%20Kamo%2C%20I%27m%20interested%20in%20your%20merch." target="_blank" rel="noopener noreferrer">
+            Message Kamo · 073 196 5775
+          </a>
+          <a class="btn btn-secondary" href="https://wa.me/27665003603?text=Hi%20Jayden%2C%20I%27m%20interested%20in%20your%20merch." target="_blank" rel="noopener noreferrer">
+            Message Jayden · 066 500 3603
+          </a>
+        </div>
+      </section>
+
+      <div class="merch-gallery">
+        <figure class="merch-item">
+          <img src="merch/merch-3.png" alt="Three people wearing Godchose Me apparel" />
+        </figure>
+        <figure class="merch-item">
+          <img src="merch/merch-4.png" alt="Back view of the cream Godchose Me shirt" />
+        </figure>
+        <figure class="merch-item">
+          <img src="merch/merch-5.png" alt="Model wearing the merch with black and teal designs" />
+        </figure>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <p>© <span id="year"></span> Ingodspresence. All rights reserved.</p>
+        <p>Equipping believers to obey Matthew 28:19.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
