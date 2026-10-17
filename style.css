@@ -271,6 +271,12 @@ h1 {
   gap: 1.25rem;
 }
 
+.resources-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 850px;
+  margin: 0 auto;
+}
+
 .feature-card,
 .product-card {
   background: var(--surface);
@@ -278,6 +284,16 @@ h1 {
   border-radius: 1.2rem;
   padding: 1.5rem;
   box-shadow: 0 10px 24px rgba(21, 18, 16, 0.03);
+}
+
+.resources-grid .product-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.resources-grid .btn {
+  align-self: flex-start;
+  margin-top: auto;
 }
 
 .product-card span {
