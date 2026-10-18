@@ -11,7 +11,7 @@
       <div class="feature-card" style="max-width: 520px; margin: 0 auto;">
         <h2>Admin Login</h2>
         <p>Enter your credentials to manage products and view orders.</p>
-        <div style="background:#fff3cd; color:#664d03; border:1px solid #ffeeba; padding:1rem; margin-bottom:1rem; border-radius:8px;">
+        <div class="notice">
           <strong>Important:</strong> This admin page requires the backend server at <code>http://localhost:3000</code>.
           GitHub Pages only serves the static website and cannot run the backend API.
           To use the admin UI locally, start the server from <code>server/</code> first.
@@ -21,9 +21,10 @@
           <label>Password<br /><input id="admin-pass" type="password" required /></label>
           <button type="submit" class="btn btn-primary" style="width:100%; margin-top:1rem;">Sign In</button>
         </form>
-        <p id="login-error" style="color:#b00020; margin-top:1rem;"></p>
+        <p id="login-error" class="error-message"></p>
       </div>
     </main>
+    <script src="script.js"></script>
     <script src="config.js"></script>
     <script>
       const API_BASE = window.APP_CONFIG?.API_BASE || 'http://localhost:3000';
