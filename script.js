@@ -53,6 +53,9 @@ settingsToggle.addEventListener('click', () => {
 themeSelect.addEventListener('change', () => {
   localStorage.setItem(themeStorageKey, themeSelect.value);
   setTheme(themeSelect.value);
+  settingsPanel.hidden = true;
+  settingsToggle.setAttribute('aria-expanded', 'false');
+  settingsToggle.focus();
 });
 
 document.addEventListener('keydown', (event) => {
