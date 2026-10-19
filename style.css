@@ -984,15 +984,14 @@ html[data-theme="dark"] #resources .product-card {
 }
 
 html[data-theme="dark"] .btn-primary {
-  background: var(--card-accent);
+  background: var(--primary);
   color: #111827;
-  box-shadow: 0 8px 20px rgba(77, 141, 255, 0.2);
+  box-shadow: 0 8px 20px rgba(255, 93, 115, 0.16);
 }
 
 html[data-theme="dark"] .btn-primary:hover {
-  background: var(--card-accent);
-  box-shadow: 0 10px 24px rgba(166, 107, 255, 0.3);
-  filter: brightness(1.08);
+  background: var(--primary-dark);
+  box-shadow: 0 10px 24px rgba(255, 159, 28, 0.2);
 }
 
 html[data-theme="dark"] .signup-form input:focus,
@@ -1003,6 +1002,8 @@ html[data-theme="dark"] .signup-form textarea:focus {
 html[data-theme="dark"] #mission .section-heading::after,
 html[data-theme="dark"] #resources .section-heading::after {
   background: var(--card-accent);
+  height: 2px;
+  width: 2.75rem;
 }
 
 .hero-card::before {
@@ -1011,6 +1012,28 @@ html[data-theme="dark"] #resources .section-heading::after {
   height: 3px;
   background: var(--card-accent);
   content: '';
+  transition: opacity 180ms ease;
+}
+
+html[data-theme="dark"] .hero-card::before,
+html[data-theme="dark"] .statement-card::before,
+html[data-theme="dark"] .feature-card::before,
+html[data-theme="dark"] .product-card::before,
+html[data-theme="dark"] .merch-contact::before {
+  opacity: 0;
+}
+
+html[data-theme="dark"] .hero-card:hover::before,
+html[data-theme="dark"] .statement-card:hover::before,
+html[data-theme="dark"] .feature-card:hover::before,
+html[data-theme="dark"] .product-card:hover::before,
+html[data-theme="dark"] .merch-contact:hover::before,
+html[data-theme="dark"] .hero-card:focus-within::before,
+html[data-theme="dark"] .statement-card:focus-within::before,
+html[data-theme="dark"] .feature-card:focus-within::before,
+html[data-theme="dark"] .product-card:focus-within::before,
+html[data-theme="dark"] .merch-contact:focus-within::before {
+  opacity: 0.72;
 }
 
 .hero-card h3,
