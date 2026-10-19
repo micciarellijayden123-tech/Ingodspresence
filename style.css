@@ -1030,6 +1030,12 @@ p {
   background-image: linear-gradient(145deg, rgba(255, 255, 255, 0.45), transparent 68%);
 }
 
+html[data-theme="dark"] .statement-card,
+html[data-theme="dark"] .feature-card,
+html[data-theme="dark"] .product-card {
+  background-image: none;
+}
+
 .statement-card::before,
 .feature-card::before,
 .product-card::before {
