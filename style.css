@@ -37,12 +37,12 @@ html[data-theme="dark"] {
   --surface-soft: #1c2a3d;
   --text: #f3f6fc;
   --muted: #acb9ca;
-  --primary: #ff786b;
-  --primary-dark: #ff9b8d;
-  --accent: #f6cd64;
+  --primary: #ff5d73;
+  --primary-dark: #ff9f1c;
+  --accent: #ffe14a;
   --border: #2a3b52;
-  --secondary: #54d6c5;
-  --tertiary: #88a6ff;
+  --secondary: #38d98a;
+  --tertiary: #4d8dff;
   --shadow: rgba(0, 0, 0, 0.4);
   --page-glow: none;
   --hero-bg: #0d1420;
@@ -55,7 +55,16 @@ html[data-theme="dark"] {
   --input-bg: #1c2a3d;
   --input-text: #f3f6fc;
   --badge-text: #25200e;
-  --card-accent: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
+  --card-accent: linear-gradient(
+    90deg,
+    #ff4d6d 0%,
+    #ff9f1c 16%,
+    #ffe14a 32%,
+    #38d98a 48%,
+    #23c9bd 64%,
+    #4d8dff 80%,
+    #a66bff 100%
+  );
   --cta-bg: #162a39;
   --welcome-glow: none;
   color-scheme: dark;
@@ -975,14 +984,15 @@ html[data-theme="dark"] #resources .product-card {
 }
 
 html[data-theme="dark"] .btn-primary {
-  background: var(--primary);
-  color: #171b24;
-  box-shadow: 0 8px 20px rgba(255, 120, 107, 0.22);
+  background: var(--card-accent);
+  color: #111827;
+  box-shadow: 0 8px 20px rgba(77, 141, 255, 0.2);
 }
 
 html[data-theme="dark"] .btn-primary:hover {
-  background: var(--primary-dark);
-  box-shadow: 0 10px 24px rgba(255, 120, 107, 0.3);
+  background: var(--card-accent);
+  box-shadow: 0 10px 24px rgba(166, 107, 255, 0.3);
+  filter: brightness(1.08);
 }
 
 html[data-theme="dark"] .signup-form input:focus,
