@@ -32,30 +32,31 @@
 }
 
 html[data-theme="dark"] {
-  --bg: #14171b;
-  --surface: #1d2228;
-  --surface-soft: #252b33;
-  --text: #f2f3f5;
-  --muted: #b5bdc8;
-  --primary: #f07a6d;
-  --primary-dark: #ffb1a6;
-  --accent: #e9c96a;
-  --border: #39424c;
-  --secondary: #79b8ad;
-  --tertiary: #8da9e7;
-  --shadow: rgba(0, 0, 0, 0.28);
+  --bg: #0d1420;
+  --surface: #151f2f;
+  --surface-soft: #1c2a3d;
+  --text: #f3f6fc;
+  --muted: #acb9ca;
+  --primary: #ff786b;
+  --primary-dark: #ff9b8d;
+  --accent: #f6cd64;
+  --border: #2a3b52;
+  --secondary: #54d6c5;
+  --tertiary: #88a6ff;
+  --shadow: rgba(0, 0, 0, 0.4);
   --page-glow: none;
-  --hero-bg: #14171b;
-  --hero-card-bg: #1d2228;
-  --section-alt: #191d23;
-  --primary-card-bg: #1d2228;
-  --testimonial-bg: #1d2228;
-  --secondary-button-bg: rgba(255, 255, 255, 0.06);
-  --mock-shirt-bg: #252b33;
-  --input-bg: #252b33;
-  --input-text: #f2f3f5;
-  --badge-text: #493817;
-  --cta-bg: #172633;
+  --hero-bg: #0d1420;
+  --hero-card-bg: #151f2f;
+  --section-alt: #111b2a;
+  --primary-card-bg: #182437;
+  --testimonial-bg: #151f2f;
+  --secondary-button-bg: #1c2a3d;
+  --mock-shirt-bg: #202e42;
+  --input-bg: #1c2a3d;
+  --input-text: #f3f6fc;
+  --badge-text: #25200e;
+  --card-accent: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
+  --cta-bg: #162a39;
   --welcome-glow: none;
   color-scheme: dark;
 }
@@ -969,19 +970,29 @@ html[data-theme="dark"] #resources,
 html[data-theme="dark"] #mission .statement-card,
 html[data-theme="dark"] #mission .feature-card,
 html[data-theme="dark"] #resources .product-card {
-  background: var(--bg);
+  background: var(--surface);
   background-image: none;
 }
 
-html[data-theme="dark"] #mission .statement-card::before,
-html[data-theme="dark"] #mission .feature-card::before,
-html[data-theme="dark"] #resources .product-card::before {
-  display: none;
+html[data-theme="dark"] .btn-primary {
+  background: var(--primary);
+  color: #171b24;
+  box-shadow: 0 8px 20px rgba(255, 120, 107, 0.22);
+}
+
+html[data-theme="dark"] .btn-primary:hover {
+  background: var(--primary-dark);
+  box-shadow: 0 10px 24px rgba(255, 120, 107, 0.3);
+}
+
+html[data-theme="dark"] .signup-form input:focus,
+html[data-theme="dark"] .signup-form textarea:focus {
+  outline-color: var(--secondary);
 }
 
 html[data-theme="dark"] #mission .section-heading::after,
 html[data-theme="dark"] #resources .section-heading::after {
-  background: var(--border);
+  background: var(--card-accent);
 }
 
 .hero-card::before {
