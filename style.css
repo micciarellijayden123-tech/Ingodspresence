@@ -964,6 +964,26 @@ html[data-theme="dark"] .welcome-page .hero::after {
   display: none;
 }
 
+html[data-theme="dark"] #mission,
+html[data-theme="dark"] #resources,
+html[data-theme="dark"] #mission .statement-card,
+html[data-theme="dark"] #mission .feature-card,
+html[data-theme="dark"] #resources .product-card {
+  background: var(--bg);
+  background-image: none;
+}
+
+html[data-theme="dark"] #mission .statement-card::before,
+html[data-theme="dark"] #mission .feature-card::before,
+html[data-theme="dark"] #resources .product-card::before {
+  display: none;
+}
+
+html[data-theme="dark"] #mission .section-heading::after,
+html[data-theme="dark"] #resources .section-heading::after {
+  background: var(--border);
+}
+
 .hero-card::before {
   position: absolute;
   inset: 0 0 auto;
