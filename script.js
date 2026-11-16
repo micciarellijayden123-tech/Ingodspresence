@@ -15,7 +15,8 @@ function setTheme(theme) {
 }
 
 const savedTheme = localStorage.getItem(themeStorageKey);
-setTheme(savedTheme === 'dark' ? 'dark' : 'light');
+const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+setTheme(savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : systemTheme);
 
 const themeSettings = document.createElement('div');
 themeSettings.className = 'theme-settings';
@@ -83,6 +84,50 @@ if (nav) {
   document.body.append(themeSettings);
 }
 setTheme(document.documentElement.dataset.theme);
+
+const navLinks = nav ? nav.querySelector('.nav-links') : null;
+if (nav && navLinks) {
+  if (!navLinks.id) {
+    navLinks.id = 'primary-navigation';
+  }
+
+  const navToggle = document.createElement('button');
+  navToggle.type = 'button';
+  navToggle.className = 'nav-toggle';
+  navToggle.textContent = 'Menu';
+  navToggle.setAttribute('aria-label', 'Open navigation menu');
+  navToggle.setAttribute('aria-expanded', 'false');
+  navToggle.setAttribute('aria-controls', navLinks.id);
+  nav.insertBefore(navToggle, navLinks);
+
+  const closeNav = () => {
+    nav.classList.remove('nav-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Open navigation menu');
+    navToggle.textContent = 'Menu';
+  };
+
+  navToggle.addEventListener('click', () => {
+    const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+    nav.classList.toggle('nav-open', !isOpen);
+    navToggle.setAttribute('aria-expanded', String(!isOpen));
+    navToggle.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+    navToggle.textContent = isOpen ? 'Menu' : 'Close';
+  });
+
+  navLinks.addEventListener('click', (event) => {
+    if (event.target.closest('a')) {
+      closeNav();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
+      closeNav();
+      navToggle.focus();
+    }
+  });
+}
 
 if (yearEl) {
   yearEl.textContent = new Date().getFullYear();

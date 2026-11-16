@@ -5,7 +5,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
     <title>Ingodspresence — The Great Commission</title>
     <meta
       name="description"
@@ -21,7 +21,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css?v=visual-14" />
+    <link rel="stylesheet" href="style.css?v=visual-15" />
   </head>
   <body>
     <header class="hero">
@@ -179,15 +179,15 @@
         <input type="hidden" name="_subject" value="Bible Study Picnic Registration - November 28, 2026" />
         <div class="form-field">
           <label for="picnic-name">Your name</label>
-          <input type="text" id="picnic-name" name="fullName" autocomplete="name" placeholder="Enter your full name" required />
+          <input type="text" id="picnic-name" name="fullName" autocomplete="name" autocapitalize="words" enterkeyhint="next" placeholder="Enter your full name" required />
         </div>
         <div class="form-field">
           <label for="picnic-email">Email address</label>
-          <input type="email" id="picnic-email" name="email" autocomplete="email" placeholder="you@example.com" required />
+          <input type="email" id="picnic-email" name="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" enterkeyhint="next" placeholder="you@example.com" required />
         </div>
         <div class="form-field">
           <label for="picnic-phone">Phone number (optional)</label>
-          <input type="tel" id="picnic-phone" name="phone" autocomplete="tel" placeholder="+27 12 345 6789" />
+          <input type="tel" id="picnic-phone" name="phone" autocomplete="tel" inputmode="tel" enterkeyhint="done" placeholder="+27 12 345 6789" />
         </div>
         <button type="submit">Register for the Picnic</button>
       </form>
@@ -204,11 +204,15 @@
     </div>
 <form class="signup-form" id="signup-form" action="https://formspree.io/f/mzdnyzjl" method="POST">
   <div class="form-row">
-    <input type="text" id="first-name-input" name="firstName" placeholder="Name" required />
-    <input type="text" id="last-name-input" name="lastName" placeholder="Surname" required />
+    <label class="visually-hidden" for="first-name-input">First name</label>
+    <input type="text" id="first-name-input" name="firstName" autocomplete="given-name" autocapitalize="words" enterkeyhint="next" placeholder="Name" required />
+    <label class="visually-hidden" for="last-name-input">Last name</label>
+    <input type="text" id="last-name-input" name="lastName" autocomplete="family-name" autocapitalize="words" enterkeyhint="next" placeholder="Surname" required />
   </div>
-  <input type="email" id="email-input" name="email" placeholder="Enter your email" required />
-  <textarea id="prayer-request-input" name="prayerRequest" placeholder="Prayer request (optional)" rows="3"></textarea>
+  <label class="visually-hidden" for="email-input">Email address</label>
+  <input type="email" id="email-input" name="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" enterkeyhint="next" placeholder="Enter your email" required />
+  <label class="visually-hidden" for="prayer-request-input">Prayer request (optional)</label>
+  <textarea id="prayer-request-input" name="prayerRequest" enterkeyhint="done" placeholder="Prayer request (optional)" rows="3"></textarea>
   <button type="submit">Join the Mission</button>
 </form>
     <p id="form-message" class="form-message" aria-live="polite"></p>
@@ -222,6 +226,6 @@
       </div>
     </footer>
 
-    <script src="script.js?v=appearance-close-picnic"></script>
+    <script src="script.js?v=mobile-nav-15"></script>
   </body>
 </html>
