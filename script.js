@@ -47,10 +47,6 @@ settingsToggle.addEventListener('click', () => {
   const isOpen = settingsToggle.getAttribute('aria-expanded') === 'true';
   settingsToggle.setAttribute('aria-expanded', String(!isOpen));
   settingsPanel.hidden = isOpen;
-
-  if (!isOpen) {
-    themeSelect.focus();
-  }
 });
 
 themeSelect.addEventListener('change', () => {
