@@ -21,7 +21,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css?v=visual-10" />
+    <link rel="stylesheet" href="style.css?v=visual-11" />
   </head>
   <body>
     <header class="hero">
@@ -38,6 +38,7 @@
         <div class="nav-links">
           <a href="resources.html">Resources</a>
           <a href="mission.html">Mission</a>
+          <a href="#picnic-registration">Bible Study Picnic</a>
           <a href="merch.html">Merch</a>
           <a href="site.html#join">Get Involved</a>
           <a href="admin-login.html">Admin</a>
@@ -152,6 +153,50 @@
       </section>
     </main>
 
+   <section id="picnic-registration" class="section cta-section">
+  <div class="container cta-card picnic-card">
+    <div class="picnic-copy">
+      <p class="eyebrow">You're invited</p>
+      <h2>Bible Study Picnic</h2>
+      <p><strong>Date:</strong> <time datetime="2026-11-28">Saturday, November 28, 2026</time></p>
+      <p><strong>Time:</strong> 9:30 a.m. – 3:30 p.m.</p>
+      <p><strong>Venue:</strong> Phoenix Park, SE2, Vanderbijlpark</p>
+      <p>Join us for fellowship, food sharing, and group activities. Register below and let us know how many people are coming.</p>
+      <img
+        class="picnic-flyer"
+        src="bible-study-picnic.jpeg"
+        alt="Bible Study Picnic Gathering flyer: fellowship, food sharing and group activities at Phoenix Park, SE2, Vanderbijlpark, on November 28, 2026, from 9:30 a.m. to 3:30 p.m."
+        loading="lazy"
+      />
+    </div>
+    <form class="signup-form" id="picnic-registration-form" action="https://formspree.io/f/mzdnyzjl" method="POST">
+      <input type="hidden" name="_subject" value="Bible Study Picnic Registration - November 28, 2026" />
+      <div class="form-field">
+        <label for="picnic-name">Your name</label>
+        <input type="text" id="picnic-name" name="fullName" autocomplete="name" required />
+      </div>
+      <div class="form-field">
+        <label for="picnic-email">Email address</label>
+        <input type="email" id="picnic-email" name="email" autocomplete="email" required />
+      </div>
+      <div class="form-field">
+        <label for="picnic-phone">Phone number (optional)</label>
+        <input type="tel" id="picnic-phone" name="phone" autocomplete="tel" />
+      </div>
+      <div class="form-field">
+        <label for="picnic-attendees">Number attending (including you)</label>
+        <input type="number" id="picnic-attendees" name="attendees" min="1" step="1" value="1" required />
+      </div>
+      <div class="form-field">
+        <label for="picnic-dietary-needs">Food allergies or dietary needs (optional)</label>
+        <textarea id="picnic-dietary-needs" name="dietaryNeeds" rows="3"></textarea>
+      </div>
+      <button type="submit">Register for the Picnic</button>
+    </form>
+    <p id="picnic-form-message" class="form-message" aria-live="polite"></p>
+  </div>
+</section>
+
    <section id="join" class="section cta-section">
   <div class="container cta-card">
     <div>
@@ -178,6 +223,6 @@
       </div>
     </footer>
 
-    <script src="script.js?v=appearance-close"></script>
+    <script src="script.js?v=appearance-close-picnic"></script>
   </body>
 </html>

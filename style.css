@@ -491,6 +491,39 @@ blockquote {
   max-width: 480px;
 }
 
+.picnic-card {
+  align-items: flex-start;
+}
+
+.picnic-copy {
+  flex: 1 1 320px;
+  max-width: 420px;
+}
+
+.picnic-copy p {
+  margin: 0.6rem 0;
+}
+
+.picnic-flyer {
+  display: block;
+  width: min(100%, 380px);
+  height: auto;
+  margin-top: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: 0 12px 25px rgba(30, 26, 23, 0.18);
+}
+
+.signup-form .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.signup-form label {
+  font-weight: 600;
+}
+
 .form-row {
   display: flex;
   gap: 0.9rem;

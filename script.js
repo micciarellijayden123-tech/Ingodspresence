@@ -1,6 +1,8 @@
 const yearEl = document.getElementById('year');
 const signupForm = document.getElementById('signup-form');
 const formMessage = document.getElementById('form-message');
+const picnicForm = document.getElementById('picnic-registration-form');
+const picnicFormMessage = document.getElementById('picnic-form-message');
 const themeStorageKey = 'site-theme';
 
 function setTheme(theme) {
@@ -121,6 +123,45 @@ if (signupForm && formMessage) {
       }
     } catch (error) {
       formMessage.textContent = 'There was an issue submitting your sign-up. Please try again or email us directly.';
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = originalLabel;
+      }
+    }
+  });
+}
+
+if (picnicForm && picnicFormMessage) {
+  picnicForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const submitButton = picnicForm.querySelector('button[type="submit"]');
+    const originalLabel = submitButton ? submitButton.textContent : 'Register for the Picnic';
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = 'Submitting...';
+    }
+
+    try {
+      const response = await fetch(picnicForm.action, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(Object.fromEntries(new FormData(picnicForm).entries())),
+      });
+
+      if (response.ok) {
+        picnicFormMessage.textContent = 'Thank you for registering! We will share any additional picnic details with you.';
+        picnicForm.reset();
+      } else {
+        throw new Error('Registration submission failed');
+      }
+    } catch (error) {
+      picnicFormMessage.textContent = 'We could not submit your registration. Please try again later.';
     } finally {
       if (submitButton) {
         submitButton.disabled = false;
