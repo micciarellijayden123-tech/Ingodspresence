@@ -21,7 +21,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css?v=visual-11" />
+    <link rel="stylesheet" href="style.css?v=visual-12" />
   </head>
   <body>
     <header class="hero">
@@ -169,23 +169,30 @@
         loading="lazy"
       />
     </div>
-    <form class="signup-form" id="picnic-registration-form" action="https://formspree.io/f/mzdnyzjl" method="POST">
-      <input type="hidden" name="_subject" value="Bible Study Picnic Registration - November 28, 2026" />
-      <div class="form-field">
-        <label for="picnic-name">Your name</label>
-        <input type="text" id="picnic-name" name="fullName" autocomplete="name" required />
+    <div class="picnic-form-panel">
+      <div class="picnic-form-heading">
+        <p class="eyebrow">Registration</p>
+        <h3>Reserve your place</h3>
+        <p>Enter your contact details to register. Name and email are required; phone is optional.</p>
       </div>
-      <div class="form-field">
-        <label for="picnic-email">Email address</label>
-        <input type="email" id="picnic-email" name="email" autocomplete="email" required />
-      </div>
-      <div class="form-field">
-        <label for="picnic-phone">Phone number (optional)</label>
-        <input type="tel" id="picnic-phone" name="phone" autocomplete="tel" />
-      </div>
-      <button type="submit">Register for the Picnic</button>
-    </form>
-    <p id="picnic-form-message" class="form-message" aria-live="polite"></p>
+      <form class="signup-form picnic-form" id="picnic-registration-form" action="https://formspree.io/f/mzdnyzjl" method="POST">
+        <input type="hidden" name="_subject" value="Bible Study Picnic Registration - November 28, 2026" />
+        <div class="form-field">
+          <label for="picnic-name">Your name</label>
+          <input type="text" id="picnic-name" name="fullName" autocomplete="name" placeholder="Enter your full name" required />
+        </div>
+        <div class="form-field">
+          <label for="picnic-email">Email address</label>
+          <input type="email" id="picnic-email" name="email" autocomplete="email" placeholder="you@example.com" required />
+        </div>
+        <div class="form-field">
+          <label for="picnic-phone">Phone number (optional)</label>
+          <input type="tel" id="picnic-phone" name="phone" autocomplete="tel" placeholder="+27 12 345 6789" />
+        </div>
+        <button type="submit">Register for the Picnic</button>
+      </form>
+      <p id="picnic-form-message" class="form-message picnic-form-message" aria-live="polite"></p>
+    </div>
   </div>
 </section>
 

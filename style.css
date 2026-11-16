@@ -492,7 +492,8 @@ blockquote {
 }
 
 .picnic-card {
-  align-items: flex-start;
+  align-items: stretch;
+  gap: clamp(1.5rem, 4vw, 3rem);
 }
 
 .picnic-copy {
@@ -514,14 +515,81 @@ blockquote {
   box-shadow: 0 12px 25px rgba(30, 26, 23, 0.18);
 }
 
-.signup-form .form-field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
+.picnic-form-panel {
+  flex: 1 1 360px;
+  max-width: 480px;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 16px 36px var(--shadow);
 }
 
-.signup-form label {
+.picnic-form-heading h3 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2vw, 1.75rem);
+}
+
+.picnic-form-heading p:last-child {
+  margin: 0.55rem 0 1.4rem;
+  color: var(--muted);
+}
+
+.picnic-form {
+  width: 100%;
+  max-width: none;
+  gap: 1rem;
+}
+
+.picnic-form .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.picnic-form label {
   font-weight: 600;
+}
+
+.picnic-form input {
+  min-height: 3.1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.7rem;
+}
+
+.picnic-form input:focus {
+  border-color: var(--tertiary);
+  box-shadow: 0 0 0 3px rgba(109, 139, 191, 0.2);
+}
+
+.picnic-form button {
+  align-self: stretch;
+  width: 100%;
+  min-height: 3.25rem;
+  margin-top: 0.25rem;
+  transition: transform 160ms ease, filter 160ms ease;
+}
+
+.picnic-form button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(0.97);
+}
+
+.picnic-form button:focus-visible {
+  outline: 3px solid var(--tertiary);
+  outline-offset: 3px;
+}
+
+.picnic-form button:disabled {
+  cursor: wait;
+  opacity: 0.75;
+}
+
+.picnic-form-message {
+  min-height: 1.6em;
+  margin-top: 0.9rem;
+  color: var(--text);
 }
 
 .form-row {
@@ -790,6 +858,11 @@ textarea::placeholder {
   .cta-card,
   .testimonial-box {
     padding: 1.25rem;
+  }
+
+  .picnic-copy,
+  .picnic-form-panel {
+    max-width: none;
   }
 
   .product-card img {
