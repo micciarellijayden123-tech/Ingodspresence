@@ -553,14 +553,14 @@ blockquote {
   font-weight: 600;
 }
 
-.picnic-form input {
+.signup-form.picnic-form input {
   min-height: 3.1rem;
   background: var(--surface-soft);
   border: 1px solid var(--border);
   border-radius: 0.7rem;
 }
 
-.picnic-form input:focus {
+.signup-form.picnic-form input:focus {
   border-color: var(--tertiary);
   box-shadow: 0 0 0 3px rgba(109, 139, 191, 0.2);
 }
