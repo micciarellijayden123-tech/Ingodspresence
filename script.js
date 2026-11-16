@@ -21,7 +21,7 @@ setTheme(savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : systemTh
 const themeSettings = document.createElement('div');
 themeSettings.className = 'theme-settings';
 themeSettings.innerHTML = `
-  <button type="button" class="theme-settings-toggle" aria-expanded="false" aria-controls="theme-settings-panel">
+  <button type="button" class="theme-settings-toggle" aria-label="Appearance settings" aria-expanded="false" aria-controls="theme-settings-panel">
     <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="12" cy="12" r="3"></circle>
       <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-1.7 2.94-.08-.02a1.7 1.7 0 0 0-1.81.5l-.06.07h-3.4l-.04-.08a1.7 1.7 0 0 0-1.6-1.04 1.7 1.7 0 0 0-.74.17l-.08.04-2.94-1.7.02-.08a1.7 1.7 0 0 0-.5-1.81l-.07-.06v-3.4l.08-.04a1.7 1.7 0 0 0 .87-1.48 1.7 1.7 0 0 0-.17-.74l-.04-.08 1.7-2.94.08.02a1.7 1.7 0 0 0 1.81-.5l.06-.07h3.4l.04.08a1.7 1.7 0 0 0 1.6 1.04 1.7 1.7 0 0 0 .74-.17l.08-.04 2.94 1.7-.02.08a1.7 1.7 0 0 0 .5 1.81l.07.06v3.4l-.08.04a1.7 1.7 0 0 0-.87 1.48Z"></path>
@@ -77,8 +77,11 @@ document.addEventListener('click', (event) => {
 });
 
 const nav = document.querySelector('.nav');
+const navActions = nav ? document.createElement('div') : null;
 if (nav) {
-  nav.append(themeSettings);
+  navActions.className = 'nav-actions';
+  nav.append(navActions);
+  navActions.append(themeSettings);
 } else {
   themeSettings.classList.add('theme-settings-floating');
   document.body.append(themeSettings);
@@ -86,7 +89,7 @@ if (nav) {
 setTheme(document.documentElement.dataset.theme);
 
 const navLinks = nav ? nav.querySelector('.nav-links') : null;
-if (nav && navLinks) {
+if (nav && navActions && navLinks) {
   if (!navLinks.id) {
     navLinks.id = 'primary-navigation';
   }
@@ -98,7 +101,7 @@ if (nav && navLinks) {
   navToggle.setAttribute('aria-label', 'Open navigation menu');
   navToggle.setAttribute('aria-expanded', 'false');
   navToggle.setAttribute('aria-controls', navLinks.id);
-  nav.insertBefore(navToggle, navLinks);
+  navActions.prepend(navToggle);
 
   const closeNav = () => {
     nav.classList.remove('nav-open');
@@ -125,6 +128,12 @@ if (nav && navLinks) {
     if (event.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
       closeNav();
       navToggle.focus();
+    }
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!nav.contains(event.target) && navToggle.getAttribute('aria-expanded') === 'true') {
+      closeNav();
     }
   });
 }
