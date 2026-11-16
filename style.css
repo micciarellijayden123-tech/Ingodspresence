@@ -492,7 +492,7 @@ blockquote {
 }
 
 .picnic-card {
-  align-items: stretch;
+  align-items: flex-start;
   gap: clamp(1.5rem, 4vw, 3rem);
 }
 
@@ -517,6 +517,7 @@ blockquote {
 
 .picnic-form-panel {
   flex: 1 1 360px;
+  align-self: flex-start;
   max-width: 480px;
   padding: clamp(1.25rem, 3vw, 2rem);
   border: 1px solid var(--border);
@@ -554,6 +555,7 @@ blockquote {
 
 .picnic-form input {
   min-height: 3.1rem;
+  background: var(--surface-soft);
   border: 1px solid var(--border);
   border-radius: 0.7rem;
 }
